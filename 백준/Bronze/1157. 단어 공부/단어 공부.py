@@ -1,11 +1,22 @@
-S=list(input().upper())
-SS=list(set(S))
-cnt=[0 for i in range(len(SS))]
-for i in range(len(SS)):
-    cnt[i]+=S.count(SS[i])
+chars = input().upper()
+char_dict = {}
 
-ans=SS[cnt.index(max(cnt))]
-if cnt.count(max(cnt))>=2:
-    ans='?'
+for char in chars:
+    if not char_dict.get(char):
+        char_dict[char] = 1
+    else:
+        char_dict[char] += 1
 
-print(ans)
+max_key = ''
+max_value = 0
+for key, value in char_dict.items():
+    if max_value < value:
+        max_key = key
+        max_value = value
+        
+if list(char_dict.values()).count(max_value) >= 2:
+    max_key ='?'
+    
+print(max_key)
+        
+    
