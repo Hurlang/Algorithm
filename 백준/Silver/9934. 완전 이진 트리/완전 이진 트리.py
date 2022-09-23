@@ -1,18 +1,12 @@
 def f(arr, k):
     mid = len(arr)//2
-    if mid == 0:
-        if memo[k]:
-            memo[k].append(arr[mid])
-        else:
-            memo[k] = [arr[mid]]
-    else:
-        if memo[k]:
-            memo[k].append(arr[mid])
-        else:
-            memo[k] = [arr[mid]]
+    if mid != 0:
         f(arr[:mid], k+1)
         f(arr[mid+1:], k+1)
-
+    if memo[k]:
+        memo[k].append(arr[mid])
+    else:
+        memo[k] = [arr[mid]]
 
 
 K = int(input())
